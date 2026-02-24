@@ -1,0 +1,17 @@
+=== INVOICE EXTRACTION RESULTS ===
+
+--- Invoice: invoices\Nhung-to-hoa-don-moc-tien-gay-choang-co-bua-com-gia-dinh-len-toi-92-trieu-dong-1-1650618428-811-width526height693.jpg ---
+{
+    "store_name": "THE NOODLE HOUSE - 225NVT",
+    "purchase_date": "16 thg 3, 2022",
+    "total_amount": "590000 VND",
+    "items": [
+        {
+            "item_name": "Phở gà Đệ nhất Tràng An",
+            "quantity": 2,
+            "unit_price": "295000 VND",
+            "total_price": "590000 VND"
+        }
+    ]
+}
+
