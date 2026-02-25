@@ -1,17 +1,21 @@
 === INVOICE EXTRACTION RESULTS ===
 
---- Invoice: invoices\Nhung-to-hoa-don-moc-tien-gay-choang-co-bua-com-gia-dinh-len-toi-92-trieu-dong-1-1650618428-811-width526height693.jpg ---
+--- Invoice: invoices\Mau-hoa-don-GTGT-dien-tu(1).png ---
 {
-    "store_name": "THE NOODLE HOUSE - 225NVT",
-    "purchase_date": "16 thg 3, 2022",
-    "total_amount": "590000 VND",
+    "store_name": "CÔNG TY TNHH THƯƠNG MẠI VÀ DỊCH VỤ LANDMARK ONE",
+    "purchase_date": "13/03/2025",
+    "total_amount": "2520720 VND",
     "items": [
-        {
-            "item_name": "Phở gà Đệ nhất Tràng An",
-            "quantity": 2,
-            "unit_price": "295000 VND",
-            "total_price": "590000 VND"
-        }
+        {"item_name": "Gà đồi nướng mắc khén", "quantity": 1, "unit_price": "395000 VND", "total_price": "395000 VND"},
+        {"item_name": "Cá Hồi Sa Pa tươi sống", "quantity": 2.1, "unit_price": "690000 VND", "total_price": "1449000 VND"},
+        {"item_name": "Trà sâm dứa", "quantity": 1, "unit_price": "25000 VND", "total_price": "25000 VND"},
+        {"item_name": "Trâu cháy tiêu xanh", "quantity": 1, "unit_price": "230000 VND", "total_price": "230000 VND"},
+        {"item_name": "Măng trúc xào nấm", "quantity": 1, "unit_price": "90000 VND", "total_price": "90000 VND"},
+        {"item_name": "Lợn gác bếp", "quantity": 1, "unit_price": "95000 VND", "total_price": "95000 VND"},
+        {"item_name": "Rau cải luộc chấm trứng", "quantity": 1, "unit_price": "50000 VND", "total_price": "50000 VND"}
     ]
 }
+
+--- Error: invoices\Nhung-to-hoa-don-moc-tien-gay-choang-co-bua-com-gia-dinh-len-toi-92-trieu-dong-1-1650618428-811-width526height693.jpg ---
+403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'Your API key was reported as leaked. Please use another API key.', 'status': 'PERMISSION_DENIED'}}
 
