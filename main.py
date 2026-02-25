@@ -2,13 +2,10 @@ import os
 from PIL import Image
 from rich import print
 from google import genai
-
-# Dán API Key thật của bạn vào đây
-API_KEY = "AIzaSyBGfXRLc4qt1yLKWcCd9aDM1iCSm2J5beM"
+API_KEY = "..."
 
 client = genai.Client(api_key=API_KEY)
 
-# Đã nâng cấp Prompt: Ép AI thêm chữ "VND" vào sau các con số
 PROMPT = """
 You are an expert accountant. Please extract the invoice information from the image and return it in the exact JSON format below.
 IMPORTANT RULE: For all monetary values (total_amount, unit_price, total_price), you MUST append " VND" after the numbers. For example: "59000 VND".
@@ -54,13 +51,10 @@ if __name__ == "__main__":
     folder_name = "invoices"
     output_file = "extracted_data.txt"
     
-    # Tạo/làm sạch file text trước khi ghi
     with open(output_file, "w", encoding="utf-8") as file:
         file.write("=== INVOICE EXTRACTION RESULTS ===\n\n")
         
     print(f"[bold cyan]Results will be saved to: {output_file}[/bold cyan]\n")
-    
-    # Quét ảnh trong thư mục
     image_list = [os.path.join(folder_name, f) for f in os.listdir(folder_name) if f.lower().endswith(('.jpg', '.png', '.jpeg'))]
     
     if len(image_list) == 0:
