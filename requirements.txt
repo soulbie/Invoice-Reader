@@ -1,4 +1,5 @@
-google-generativeai
-python-dotenv
-pillow
-rich
+streamlit
+pandas
+Pillow
+google-genai>=0.3.0
+plotly
