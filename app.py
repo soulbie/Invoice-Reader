@@ -10,7 +10,7 @@ import plotly.express as px
 import re 
 
 # ==========================================
-# 1. CẤU HÌNH HỆ THỐNG VÀ KẾT NỐI API
+# 1. CẤU HÌNH HỆ THỐNG VÀ KẾT NỐI API 
 # ==========================================
 API_KEY = "..."
 client = genai.Client(api_key=API_KEY)
@@ -151,7 +151,8 @@ col1, col2 = st.columns([1, 1.5])
 
 # Khu vực 1: Module nhập liệu
 with col1:
-    tab1, tab2 = st.tabs(["Trích xuất bằng AI", "Nhập thủ công"])
+    # 💡 TÍCH HỢP THÊM TAB 3: QUẢN LÝ DỮ LIỆU
+    tab1, tab2, tab3 = st.tabs(["Trích xuất bằng AI", "Nhập thủ công", "Quản lý dữ liệu"])
     
     # Tính năng xử lý hàng loạt bằng AI OCR
     with tab1:
@@ -263,6 +264,41 @@ with col1:
                     st.success("Bản ghi đã được lưu.")
                     time.sleep(1)
                     st.rerun()
+
+    # ==========================================
+    # MODULE XÓA GIAO DỊCH (TAB 3)
+    # ==========================================
+    with tab3:
+        st.markdown("**Quản lý dữ liệu (Xóa bản ghi)**")
+        
+        # Tạo danh sách các tùy chọn hiển thị cho người dùng chọn
+        delete_options = []
+        for i, exp in enumerate(st.session_state['expenses']):
+            # Hiển thị: [Số thứ tự] Ngày - Nội dung - Số tiền
+            date_str = exp.get('purchase_date', 'Không rõ ngày')
+            desc_str = exp.get('description', 'Không rõ nội dung')
+            amt_str = exp.get('total_amount', 0)
+            delete_options.append(f"[{i}] {date_str} | {desc_str} | {amt_str:,} VNĐ")
+
+        if delete_options:
+            selected_to_delete = st.selectbox("Chọn khoản chi tiêu bị nhầm để xóa:", delete_options)
+
+            if st.button("Xóa khoản chi này", type="primary", use_container_width=True):
+                # Cắt chuỗi để lấy ra đúng index (số nằm trong dấu ngoặc vuông)
+                index_to_delete = int(selected_to_delete.split(']')[0][1:])
+
+                # Xóa phần tử khỏi session_state
+                deleted_item = st.session_state['expenses'].pop(index_to_delete)
+
+                # Xóa luôn mã băm (hash) tương ứng nếu có, để sau này có thể tải lại ảnh đó nếu muốn
+                if index_to_delete < len(st.session_state['processed_hashes']):
+                    st.session_state['processed_hashes'].pop(index_to_delete)
+
+                st.success(f"Đã xóa thành công: {deleted_item.get('description')}")
+                time.sleep(1)
+                st.rerun()  # Tải lại trang để cập nhật biểu đồ và bảng
+        else:
+            st.info("Hệ thống chưa có dữ liệu để xóa.")
 
 # Khu vực 2: Module báo cáo và hiển thị dữ liệu
 with col2:
